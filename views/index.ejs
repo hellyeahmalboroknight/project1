@@ -1,24 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-<%- include('head.ejs') -%>
+<html lang="uk">
+<%- include("head.ejs") -%>
 <body>
-    <%- include("header.ejs") -%>
-    <main>
-        <div class="wrapper">
-            <% products.forEach((product)=> { -%>
-                <a class="ads" href="/post/<%= product.id %>">
-                    <h3>
-                        <%= product.title %>
-                    </h3>
-                    <p>
-                        <%= product.desc %>
-                    </p>
-                    <img src="/uploads/<%= product.image[0] %>">
-                </a>
-            <% }) -%>
-        </div>
-        <%- include("modal.ejs") -%>
-    </main>
-    <%- include("footer.ejs") -%>
+  <%- include("header.ejs") -%>
+
+  <main>
+    <section class="hero">
+      <div class="hero-decor" aria-hidden="true">
+        <span class="bat">🦇</span>
+        <span class="bat b2">🦇</span>
+        <span class="bat b3">🦇</span>
+      </div>
+
+      <h2 class="hero-title">Лови атмосферу Хелловіну — чорне, червоне, зло</h2>
+
+    
+      <div class="hero-divider" aria-hidden="true"></div>
+
+      <div class="cards" id="featured">
+        <% if (typeof products !== 'undefined' && products.length) { %>
+          <% products.slice(0,6).forEach(function(p){ %>
+            <article class="product-card">
+              <% if (p.image) { %>
+                <img src="/uploads/<%= p.image %>" alt="<%= p.title %>">
+              <% } else { %>
+                <img src="/static/placeholder.png" alt="no image">
+              <% } %>
+              <h3><%= p.title %></h3>
+              <% if (p.price) { %><p class="meta">₴<%= p.price %></p><% } %>
+              <a class="btn-cta" href="/post/<%= p.id %>">Деталі</a>
+            </article>
+          <% }) %>
+        <% } else { %>
+          <div style="padding:2rem;color:rgba(255,255,255,0.8)">Тут поки нічого немає. Додайте перший товар!</div>
+        <% } %>
+      </div>
+    </section>
+  </main>
+   <div class="blood-drops" aria-hidden="true">
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+  </div>
+
+  <%- include("footer.ejs") -%>
 </body>
 </html>

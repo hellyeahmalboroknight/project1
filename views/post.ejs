@@ -16,6 +16,34 @@
             <% }) -%>
         </div>
     </main>
+    <%- include("comment.ejs") -%>
+    <div class="commentList">
+        <h2>Comments</h2>
+        <% if(comments[0].id == null) { -%>
+            <p>No comments yet</p>
+            <% } else { -%>
+        <ul>
+            <% comments.forEach((c)=> { -%>
+                <li>
+                    <h3>
+                        Author: <%= c.Author %>
+                    </h3>
+                    <p>
+                        <%= c.text %>
+                    </p>
+                </li>
+            <% }) -%>   
+        </ul>
+        <% } -%>
+    </div>
+    <div class="imgs">
+          
+            <div class="imgs-decor" aria-hidden="true">
+                <span class="bat b1">🦇</span>
+                <span class="bat b2">🦇</span>
+                <span class="bat b3">🦇</span>
+            </div>
+        </div>
     <%- include("footer.ejs") -%>
 </body>
 </html>
